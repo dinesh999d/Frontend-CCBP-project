@@ -1,1 +1,9 @@
-/* Write your CSS here */
+.order-total-value {
+  color: black;
+}
+.order-total-label {
+  color: rgb(42, 42, 42);
+}
+.total-items {
+  font-weight: bold;
+}
