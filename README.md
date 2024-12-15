@@ -34,7 +34,6 @@ Develop an E-commerce application that allows users to browse products, add them
 
 ### Git
 - Use Git for version control.
-- Include a README file with clear instructions on how to set up and run the project.
 
 ## Technical Requirements
 - Use HTML5, CSS3, JavaScript (ES6+), and React.
