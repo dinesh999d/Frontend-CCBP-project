@@ -1,5 +1,8 @@
 .filters-group-container {
+  border-radius: 16px;
+  background-color: rgb(254, 238, 244);
   margin-top: 16px;
+  padding: 30px;
 }
 
 @media screen and (min-width: 768px) {
@@ -95,22 +98,6 @@
   margin-bottom: 18px;
 }
 
-.ratings-list {
-  padding-left: 0px;
-}
-
-.rating-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-  cursor: pointer;
-}
-
-.rating-img {
-  max-width: 152px;
-  height: 20px;
-}
-
 @media screen and (min-width: 768px) {
   .rating-img {
     height: 24px;
@@ -131,10 +118,6 @@
     font-size: 18px;
     margin-left: 14px;
   }
-}
-
-.active-rating {
-  color: #0967d2;
 }
 
 .clear-filters-btn {
