@@ -4,14 +4,6 @@
 
 Develop an E-commerce application that allows users to browse products, add them to a cart, and simulate a checkout process.
 
-## Output Figma Link
-
-[Design Output on Figma](https://www.figma.com/design/lROsZWU3Wv83PXP6BGhxmB/Untitled?node-id=1-3319&t=aK8kRTTkIYlK1AWh-1)
-
-## Reference Link
-
-[Reference Website](https://codewithsadee.github.io/anon-ecommerce-website/)
-
 ## Key Features
 
 ### Product Listing
