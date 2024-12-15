@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {withRouter} from 'react-router-dom'
 import CartContext from '../../context/CartContext'
 
 import Header from '../Header'
@@ -12,7 +13,6 @@ class Cart extends Component {
   state = {
     isCheckout: false,
     formData: {name: '', address: '', payment: ''},
-    isFormSubmitted: false,
   }
 
   handleInputChange = ({target: {name, value}}) => {
@@ -23,31 +23,23 @@ class Cart extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    this.setState({isFormSubmitted: true})
+    const {formData} = this.state
+    localStorage.setItem('name', formData.name)
+    localStorage.setItem('address', formData.address)
+    localStorage.setItem('payment', formData.payment)
+    const {history} = this.props
+    history.push('/checkout')
   }
 
   render() {
-    const {isCheckout, formData, isFormSubmitted} = this.state
+    const {isCheckout, formData} = this.state
 
     return (
       <CartContext.Consumer>
         {({cartList, removeAllCartItems}) => {
           const isEmpty = cartList.length === 0
 
-          return isFormSubmitted ? (
-            <div className="confirmation-container">
-              <h1 className="confirmation-name">Thank you, {formData.name}!</h1>
-              <h1 className="confirmation-heading">
-                Your Order Placed Successfully
-              </h1>
-              <p className="confirmation-address">
-                Address: {formData.address}
-              </p>
-              <p className="confirmation-payment">
-                Paid with {formData.payment}
-              </p>
-            </div>
-          ) : (
+          return (
             <>
               <Header />
               <div className="cart-container">
@@ -57,6 +49,7 @@ class Cart extends Component {
                   <div className="cart-content-container">
                     <h1 className="cart-heading">My Cart</h1>
                     <button
+                      type="button"
                       className="remove-all-btn"
                       onClick={removeAllCartItems}
                     >
@@ -66,6 +59,7 @@ class Cart extends Component {
                     <CartSummary />
                     {!isCheckout ? (
                       <button
+                        type="button"
                         className="checkout-btn"
                         onClick={() => this.setState({isCheckout: true})}
                       >
@@ -126,4 +120,4 @@ class Cart extends Component {
   }
 }
 
-export default Cart
+export default withRouter(Cart)
