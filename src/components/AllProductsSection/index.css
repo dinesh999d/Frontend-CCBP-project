@@ -162,3 +162,9 @@
     width: 70%;
   }
 }
+.all-products-container {
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 8vh;
+  background-color: #fff9fc;
+}
