@@ -4,7 +4,6 @@ import Cookies from 'js-cookie'
 
 import FiltersGroup from '../FiltersGroup'
 import ProductCard from '../ProductCard'
-import ProductsHeader from '../ProductsHeader'
 
 import './index.css'
 
@@ -31,40 +30,6 @@ const categoryOptions = [
   },
 ]
 
-const sortbyOptions = [
-  {
-    optionId: 'PRICE_HIGH',
-    displayText: 'Price (High-Low)',
-  },
-  {
-    optionId: 'PRICE_LOW',
-    displayText: 'Price (Low-High)',
-  },
-]
-
-const ratingsList = [
-  {
-    ratingId: '4',
-    imageUrl:
-      'https://assets.ccbp.in/frontend/react-js/rating-four-stars-img.png',
-  },
-  {
-    ratingId: '3',
-    imageUrl:
-      'https://assets.ccbp.in/frontend/react-js/rating-three-stars-img.png',
-  },
-  {
-    ratingId: '2',
-    imageUrl:
-      'https://assets.ccbp.in/frontend/react-js/rating-two-stars-img.png',
-  },
-  {
-    ratingId: '1',
-    imageUrl:
-      'https://assets.ccbp.in/frontend/react-js/rating-one-star-img.png',
-  },
-]
-
 const apiStatusConstants = {
   initial: 'INITIAL',
   success: 'SUCCESS',
@@ -76,8 +41,7 @@ class AllProductsSection extends Component {
   state = {
     productsList: [],
     apiStatus: apiStatusConstants.initial,
-    activeOptionId: sortbyOptions[0].optionId,
-    activeCategoryId: '',
+    activeCategoryId: categoryOptions[0].categoryId,
     searchInput: '',
     activeRatingId: '',
   }
@@ -91,13 +55,8 @@ class AllProductsSection extends Component {
       apiStatus: apiStatusConstants.inProgress,
     })
     const jwtToken = Cookies.get('jwt_token')
-    const {
-      activeOptionId,
-      activeCategoryId,
-      searchInput,
-      activeRatingId,
-    } = this.state
-    const apiUrl = `https://apis.ccbp.in/products?sort_by=${activeOptionId}&category=${activeCategoryId}&title_search=${searchInput}&rating=${activeRatingId}`
+    const {activeCategoryId, searchInput} = this.state
+    const apiUrl = `https://apis.ccbp.in/products?category=${activeCategoryId}&title_search=${searchInput}`
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -148,21 +107,13 @@ class AllProductsSection extends Component {
     </div>
   )
 
-  changeSortby = activeOptionId => {
-    this.setState({activeOptionId}, this.getProducts)
-  }
-
   renderProductsListView = () => {
-    const {productsList, activeOptionId} = this.state
+    const {productsList} = this.state
     const shouldShowProductsList = productsList.length > 0
 
     return shouldShowProductsList ? (
       <div className="all-products-container">
-        <ProductsHeader
-          activeOptionId={activeOptionId}
-          sortbyOptions={sortbyOptions}
-          changeSortby={this.changeSortby}
-        />
+        <h1 className="all-pro-head">All Products</h1>
         <ul className="products-list">
           {productsList.map(product => (
             <ProductCard productData={product} key={product.id} />
@@ -204,14 +155,9 @@ class AllProductsSection extends Component {
       {
         searchInput: '',
         activeCategoryId: '',
-        activeRatingId: '',
       },
       this.getProducts,
     )
-  }
-
-  changeRating = activeRatingId => {
-    this.setState({activeRatingId}, this.getProducts)
   }
 
   changeCategory = activeCategoryId => {
@@ -227,20 +173,17 @@ class AllProductsSection extends Component {
   }
 
   render() {
-    const {activeCategoryId, searchInput, activeRatingId} = this.state
+    const {activeCategoryId, searchInput} = this.state
 
     return (
       <div className="all-products-section">
         <FiltersGroup
           searchInput={searchInput}
           categoryOptions={categoryOptions}
-          ratingsList={ratingsList}
           changeSearchInput={this.changeSearchInput}
           enterSearchInput={this.enterSearchInput}
           activeCategoryId={activeCategoryId}
-          activeRatingId={activeRatingId}
           changeCategory={this.changeCategory}
-          changeRating={this.changeRating}
           clearFilters={this.clearFilters}
         />
         {this.renderAllProducts()}
