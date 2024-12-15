@@ -4,6 +4,14 @@
 
 Develop an E-commerce application that allows users to browse products, add them to a cart, and simulate a checkout process.
 
+## Output Figma Link
+
+[Design Output on Figma](https://www.figma.com/design/lROsZWU3Wv83PXP6BGhxmB/Untitled?node-id=1-3319&t=aK8kRTTkIYlK1AWh-1)
+
+## Reference Link
+
+[Reference Website](https://codewithsadee.github.io/anon-ecommerce-website/)
+
 ## Key Features
 
 ### Product Listing
@@ -11,7 +19,7 @@ Develop an E-commerce application that allows users to browse products, add them
 - Implement pagination or infinite scrolling to load more products.
 
 ### Product API Integration
-- Fetch product data from a mock e-commerce.
+- Fetch product data from a mock e-commerce API like [Fake Store API](https://fakestoreapi.com/docs).
 - Handle loading states and errors gracefully.
 - Implement caching and a loader for improved performance (optional but preferred).
 
@@ -34,6 +42,7 @@ Develop an E-commerce application that allows users to browse products, add them
 
 ### Git
 - Use Git for version control.
+- Include a README file with clear instructions on how to set up and run the project.
 
 ## Technical Requirements
 - Use HTML5, CSS3, JavaScript (ES6+), and React.
