@@ -11,7 +11,7 @@ Develop an E-commerce application that allows users to browse products, add them
 - Implement pagination or infinite scrolling to load more products.
 
 ### Product API Integration
-- Fetch product data from a mock e-commerce API like [Fake Store API](https://fakestoreapi.com/docs).
+- Fetch product data from a mock e-commerce API.
 - Handle loading states and errors gracefully.
 - Implement caching and a loader for improved performance (optional but preferred).
 
