@@ -162,7 +162,6 @@ class ProductItemDetails extends Component {
                   <button
                     type="button"
                     className="quantity-controller-button"
-                    aria-label="Mute volume"
                     onClick={this.onDecrementQuantity}
                     data-testid="minus"
                   >
@@ -172,7 +171,6 @@ class ProductItemDetails extends Component {
                   <button
                     type="button"
                     className="quantity-controller-button"
-                    aria-label="Mute volume"
                     onClick={this.onIncrementQuantity}
                     data-testid="plus"
                   >
